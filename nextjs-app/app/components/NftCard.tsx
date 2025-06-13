@@ -26,12 +26,13 @@ export default function NftCard() {
     if (!primaryWallet) return;
 
     try {
-      const response = await fetch("/api/random-token", {
+      // NOTE: By default, this will call the PHP API.
+      // To call the Next.js API, change the path to "/api/random-token"
+      const response = await fetch("http://localhost:8080/random.php", {
         credentials: "include",
       });
 
       if (!response.ok) setTokenId(0n);
-
       const { randomNumber } = await response.json();
       setTokenId(BigInt(randomNumber));
 

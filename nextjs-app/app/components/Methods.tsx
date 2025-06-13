@@ -51,7 +51,11 @@ export default function DynamicMethods({ isDarkMode }: DynamicMethodsProps) {
   async function verifyAuthToken() {
     try {
       setError(null);
-      const res = await fetch("/api/token-verify", { credentials: "include" });
+      // NOTE: By default, this will call the PHP API.
+      // To call the Next.js API, change the path to "/api/token-verify"
+      const res = await fetch("http://localhost:8080/verify.php", {
+        credentials: "include",
+      });
 
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || "Failed to fetch");

@@ -1,0 +1,23 @@
+version: "3.8"
+
+services:
+  frontend:
+    build: ./nextjs-app
+    ports:
+      - "3000:3000"
+    environment:
+      - NEXT_PUBLIC_API_BASE_URL=http://localhost:8080
+    volumes:
+      - ./nextjs-app:/app
+    depends_on:
+      - phpapi
+
+  phpapi:
+    build: ./php-api
+    ports:
+      - "8080:80"
+    volumes:
+      - ./php-api:/var/www/html
+    dns:
+      - 8.8.8.8
+      - 1.1.1.1

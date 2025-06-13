@@ -9,13 +9,13 @@ importers:
   .:
     dependencies:
       '@dynamic-labs/ethereum':
-        specifier: ^4
+        specifier: 4.20.2
         version: 4.20.2(@babel/core@7.27.4)(@babel/preset-env@7.27.2(@babel/core@7.27.4))(@types/react@19.1.8)(bufferutil@4.0.9)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(typescript@5.8.3)(utf-8-validate@5.0.10)(viem@2.31.2(bufferutil@4.0.9)(typescript@5.8.3)(utf-8-validate@5.0.10)(zod@3.22.4))(zod@3.22.4)
       '@dynamic-labs/ethereum-aa':
-        specifier: ^4.20.2
+        specifier: 4.20.2
         version: 4.20.2(@zerodev/webauthn-key@5.4.4(viem@2.31.2(bufferutil@4.0.9)(typescript@5.8.3)(utf-8-validate@5.0.10)(zod@3.22.4)))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(viem@2.31.2(bufferutil@4.0.9)(typescript@5.8.3)(utf-8-validate@5.0.10)(zod@3.22.4))
       '@dynamic-labs/sdk-react-core':
-        specifier: ^4
+        specifier: 4.20.2
         version: 4.20.2(@types/react@19.1.8)(react-dom@19.1.0(react@19.1.0))(react-native@0.74.0(@babel/core@7.27.4)(@babel/preset-env@7.27.2(@babel/core@7.27.4))(@types/react@19.1.8)(bufferutil@4.0.9)(react@19.1.0)(utf-8-validate@5.0.10))(react@19.1.0)
       crypto-browserify:
         specifier: ^3.12.0
@@ -8789,10 +8789,10 @@ snapshots:
   ox@0.6.7(typescript@5.8.3)(zod@3.22.4):
     dependencies:
       '@adraffy/ens-normalize': 1.11.0
-      '@noble/curves': 1.8.1
-      '@noble/hashes': 1.7.1
-      '@scure/bip32': 1.6.2
-      '@scure/bip39': 1.5.4
+      '@noble/curves': 1.9.2
+      '@noble/hashes': 1.8.0
+      '@scure/bip32': 1.7.0
+      '@scure/bip39': 1.6.0
       abitype: 1.0.8(typescript@5.8.3)(zod@3.22.4)
       eventemitter3: 5.0.1
     optionalDependencies:
