@@ -1,19 +1,11 @@
-'use client';
+"use client";
 
 import { DynamicContextProvider } from "@dynamic-labs/sdk-react-core";
 import { EthereumWalletConnectors } from "@dynamic-labs/ethereum";
 
-
-export default function Providers({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-
-  
-
+export default function Providers({ children }: { children: React.ReactNode }) {
   return (
-   <DynamicContextProvider
+    <DynamicContextProvider
       theme="auto"
       settings={{
         environmentId:

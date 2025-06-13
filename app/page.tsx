@@ -1,4 +1,3 @@
-
 "use client";
 
 import { DynamicWidget } from "@/lib/dynamic";
@@ -12,7 +11,7 @@ export default function Main() {
   const { isDarkMode } = useDarkMode();
 
   return (
-    <div className={`container ${isDarkMode ? 'dark' : 'light'}`}>
+    <div className={`container ${isDarkMode ? "dark" : "light"}`}>
       <div className="header">
         <Image
           className="logo"
