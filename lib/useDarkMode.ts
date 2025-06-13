@@ -3,24 +3,25 @@
 import { useState, useEffect } from "react";
 
 const checkIsDarkSchemePreferred = (): boolean => {
-  if (typeof window !== "undefined") {
-    return window.matchMedia?.("(prefers-color-scheme:dark)")?.matches ?? false;
-  }
-  return false;
+  if (typeof window === "undefined") return false;
+  return window.matchMedia("(prefers-color-scheme: dark)").matches;
 };
 
 export function useDarkMode() {
-  const [isDarkMode, setIsDarkMode] = useState(checkIsDarkSchemePreferred);
+  const [isDarkMode, setIsDarkMode] = useState<boolean>(false);
 
   useEffect(() => {
-    const darkModeMediaQuery = window.matchMedia(
-      "(prefers-color-scheme: dark)"
-    );
-    const handleChange = () => setIsDarkMode(checkIsDarkSchemePreferred());
+    setIsDarkMode(Boolean(checkIsDarkSchemePreferred()));
 
-    darkModeMediaQuery.addEventListener("change", handleChange);
-    return () => darkModeMediaQuery.removeEventListener("change", handleChange);
+    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+    const handleChange = (e: MediaQueryListEvent) => setIsDarkMode(e.matches);
+
+    mediaQuery.addEventListener("change", handleChange);
+    return () => mediaQuery.removeEventListener("change", handleChange);
   }, []);
 
-  return { isDarkMode, toggleDarkMode: () => setIsDarkMode(!isDarkMode) };
+  return {
+    isDarkMode,
+    toggleDarkMode: () => setIsDarkMode(!isDarkMode),
+  };
 }
