@@ -25,6 +25,9 @@ export default function PageLayout({
           />
         </Link>
         <div className="header-buttons">
+          <Link href="/examples" className="header-link">
+            Examples
+          </Link>
           <button
             className="docs-button"
             onClick={() =>

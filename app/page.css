@@ -37,6 +37,17 @@
   display: flex;
   gap: 10px;
   padding-right: 1rem;
+  align-items: center;
+}
+
+.header-link {
+  padding: 10px;
+  font-weight: bold;
+  color: #333;
+}
+
+.container.dark .header-link {
+  color: #fff;
 }
 
 .docs-button,
