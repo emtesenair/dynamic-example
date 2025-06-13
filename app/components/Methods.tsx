@@ -39,16 +39,29 @@ export default function DynamicMethods({ isDarkMode }: DynamicMethodsProps) {
   };
 
   useEffect(() => {
-    if (sdkHasLoaded && isLoggedIn && primaryWallet) {
-      setIsLoading(false);
-    } else {
-      setIsLoading(true);
-    }
+    if (sdkHasLoaded && isLoggedIn && primaryWallet) setIsLoading(false);
+    else setIsLoading(true);
   }, [sdkHasLoaded, isLoggedIn, primaryWallet]);
 
   function clearResult() {
     setResult("");
     setError(null);
+  }
+
+  async function verifyAuthToken() {
+    try {
+      const res = await fetch("/api/token-verify", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        credentials: "include",
+      });
+      if (!res.ok) throw new Error("Failed to fetch");
+      const data = await res.json();
+      setResult(safeStringify(data));
+    } catch (err) {
+      console.error(err);
+      setError(err instanceof Error ? err.message : "Failed to verify token");
+    }
   }
 
   function showUser() {
@@ -64,7 +77,8 @@ export default function DynamicMethods({ isDarkMode }: DynamicMethodsProps) {
 
   function showUserWallets() {
     try {
-      setResult(safeStringify(userWallets));
+      const wallets = userWallets.map(({ _connector, ...rest }: any) => rest);
+      setResult(safeStringify(wallets));
       setError(null);
     } catch (err) {
       setError(
@@ -135,10 +149,13 @@ export default function DynamicMethods({ isDarkMode }: DynamicMethodsProps) {
           data-theme={isDarkMode ? "dark" : "light"}
         >
           <div className="methods-container">
-            <button className="btn btn-primary" onClick={showUser}>
+            <button className="btn btn-primary" onClick={verifyAuthToken}>
+              Verify Auth Token (Cookie)
+            </button>
+            <button className="btn btn-secondary" onClick={showUser}>
               Fetch User
             </button>
-            <button className="btn btn-primary" onClick={showUserWallets}>
+            <button className="btn btn-secondary" onClick={showUserWallets}>
               Fetch User Wallets
             </button>
 
@@ -146,7 +163,7 @@ export default function DynamicMethods({ isDarkMode }: DynamicMethodsProps) {
               <>
                 <button
                   type="button"
-                  className="btn btn-primary"
+                  className="btn btn-secondary"
                   onClick={fetchEthereumPublicClient}
                 >
                   Fetch PublicClient
@@ -154,7 +171,7 @@ export default function DynamicMethods({ isDarkMode }: DynamicMethodsProps) {
 
                 <button
                   type="button"
-                  className="btn btn-primary"
+                  className="btn btn-secondary"
                   onClick={fetchEthereumWalletClient}
                 >
                   Fetch WalletClient
@@ -162,7 +179,7 @@ export default function DynamicMethods({ isDarkMode }: DynamicMethodsProps) {
 
                 <button
                   type="button"
-                  className="btn btn-primary"
+                  className="btn btn-secondary"
                   onClick={fetchEthereumMessage}
                 >
                   Fetch Message

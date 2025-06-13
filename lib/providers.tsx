@@ -9,14 +9,9 @@ export default function Providers({ children }: { children: React.ReactNode }) {
       theme="auto"
       settings={{
         // replace with your own api base url
-        apiBaseUrl:
-          process.env.NEXT_PUBLIC_DYNAMIC_API_BASE_URL ||
-          "https://auth.example.com/api/v0",
-
-        environmentId:
-          // replace with your own environment ID
-          process.env.NEXT_PUBLIC_DYNAMIC_ENV_ID ||
-          "2762a57b-faa4-41ce-9f16-abff9300e2c9",
+        apiBaseUrl: process.env.NEXT_PUBLIC_DYNAMIC_API_BASE_URL!,
+        // replace with your own environment ID
+        environmentId: process.env.NEXT_PUBLIC_DYNAMIC_ENV_ID!,
         walletConnectors: [EthereumWalletConnectors],
       }}
     >
