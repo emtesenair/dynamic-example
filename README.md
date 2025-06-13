@@ -4,7 +4,7 @@ This project demonstrates how to integrate the Dynamic embedded wallet with a fu
 
 ---
 
-## 📦 What’s Inside
+## 📦 What's Inside
 
 ### `nextjs-app/`
 
@@ -17,6 +17,27 @@ This project demonstrates how to integrate the Dynamic embedded wallet with a fu
 - Verifies `DYNAMIC_JWT_TOKEN` cookie on backend
 - Demonstrates mint gating using validated sessions
 - Dockerized PHP + Apache service
+
+---
+
+## ⚙️ Environment Variables
+
+### `nextjs-app/` (`nextjs-app/.env.local`)
+
+```env
+NEXT_PUBLIC_DYNAMIC_ENV_ID="your-dynamic-environment-id"
+NEXT_PUBLIC_DYNAMIC_API_BASE_URL="https://app.example.com/api/v0"
+```
+
+### `php-api/` (`php-api/.env`)
+
+```env
+DYNAMIC_ENV_ID="your-dynamic-environment-id"
+```
+
+Make sure the Dynamic environment ID is identical in both files so the frontend and backend verify against the same workspace.
+
+> You'll find your environment ID in the Dynamic dashboard under Developer > API.
 
 ---
 
