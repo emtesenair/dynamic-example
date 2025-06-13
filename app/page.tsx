@@ -1,12 +1,5 @@
-"use client";
-
-import { DynamicWidget } from "@/lib/dynamic";
+import NftCard from "./components/NftCard";
 
 export default function Main() {
-  return (
-    <div className="modal">
-      <DynamicWidget />
-      <div>NFT Mint Card</div>
-    </div>
-  );
+  return <NftCard />;
 }

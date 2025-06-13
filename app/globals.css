@@ -40,3 +40,11 @@ a {
     color-scheme: dark;
   }
 }
+
+.dynamic-shadow-dom {
+  z-index: 1 !important;
+}
+
+.dynamic-widget-inline-controls {
+  justify-content: space-between !important;
+}

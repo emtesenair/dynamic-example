@@ -19,7 +19,7 @@ export default function Methods() {
   if (!sdkHasLoaded || !isLoggedIn) return <div>Loading...</div>;
 
   return (
-    <div className="modal">
+    <div className="content">
       <DynamicWidget />
       <DynamicMethods isDarkMode={isDarkMode} />
     </div>

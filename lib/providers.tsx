@@ -13,6 +13,7 @@ export default function Providers({ children }: { children: React.ReactNode }) {
         // replace with your own environment ID
         environmentId: process.env.NEXT_PUBLIC_DYNAMIC_ENV_ID!,
         walletConnectors: [EthereumWalletConnectors],
+        shadowDOMEnabled: false,
       }}
     >
       {children}
