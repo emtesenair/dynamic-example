@@ -1,5 +1,6 @@
 import jwt, { JwtPayload } from "jsonwebtoken";
 import { JwksClient } from "jwks-rsa";
+import { NextRequest, NextResponse } from "next/server";
 
 /**
  * Represents the decoded payload of a Dynamic JWT.
@@ -77,3 +78,41 @@ export async function verifyDynamicJWT(
     return null;
   }
 }
+
+export type AuthenticatedUser = DynamicJwtPayload;
+
+type AuthenticatedRequestHandler = (
+  req: NextRequest,
+  { user }: { user: AuthenticatedUser }
+) => Promise<NextResponse> | NextResponse;
+
+export const withAuth =
+  (handler: AuthenticatedRequestHandler) =>
+  async (req: NextRequest): Promise<NextResponse> => {
+    try {
+      const token = req.cookies.get("DYNAMIC_JWT_TOKEN")?.value;
+
+      if (!token) {
+        return NextResponse.json(
+          { error: "Authorization token not found" },
+          { status: 401 }
+        );
+      }
+
+      const user = await verifyDynamicJWT(token);
+
+      if (!user) {
+        return NextResponse.json(
+          { error: "Invalid authentication token" },
+          { status: 401 }
+        );
+      }
+      return handler(req, { user });
+    } catch (error) {
+      console.error("An unexpected error occurred during auth:", error);
+      return NextResponse.json(
+        { error: "An internal server error occurred" },
+        { status: 500 }
+      );
+    }
+  };

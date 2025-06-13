@@ -30,4 +30,20 @@
 
 .mintButton:hover {
   background-color: #0056b3;
+}
+
+.mintButton:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+.txHash {
+  color: #007bff;
+  text-align: center;
+  word-break: break-all;
+}
+
+.error {
+  color: #dc3545;
+  text-align: center;
 } 

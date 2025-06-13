@@ -50,13 +50,12 @@ export default function DynamicMethods({ isDarkMode }: DynamicMethodsProps) {
 
   async function verifyAuthToken() {
     try {
-      const res = await fetch("/api/token-verify", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        credentials: "include",
-      });
-      if (!res.ok) throw new Error("Failed to fetch");
+      setError(null);
+      const res = await fetch("/api/token-verify", { credentials: "include" });
+
       const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "Failed to fetch");
+
       setResult(safeStringify(data));
     } catch (err) {
       console.error(err);

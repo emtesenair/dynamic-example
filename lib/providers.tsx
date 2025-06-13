@@ -2,6 +2,7 @@
 
 import { DynamicContextProvider } from "@dynamic-labs/sdk-react-core";
 import { EthereumWalletConnectors } from "@dynamic-labs/ethereum";
+import { ZeroDevSmartWalletConnectors } from "@dynamic-labs/ethereum-aa";
 
 export default function Providers({ children }: { children: React.ReactNode }) {
   return (
@@ -12,7 +13,10 @@ export default function Providers({ children }: { children: React.ReactNode }) {
         apiBaseUrl: process.env.NEXT_PUBLIC_DYNAMIC_API_BASE_URL!,
         // replace with your own environment ID
         environmentId: process.env.NEXT_PUBLIC_DYNAMIC_ENV_ID!,
-        walletConnectors: [EthereumWalletConnectors],
+        walletConnectors: [
+          EthereumWalletConnectors,
+          ZeroDevSmartWalletConnectors,
+        ],
         shadowDOMEnabled: false,
       }}
     >
