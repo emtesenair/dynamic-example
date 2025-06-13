@@ -28,7 +28,7 @@ export default function NftCard() {
     try {
       // NOTE: By default, this will call the PHP API.
       // To call the Next.js API, change the path to "/api/random-token"
-      const response = await fetch("http://localhost:8080/random.php", {
+      const response = await fetch("http://localhost:8080/public/random.php", {
         credentials: "include",
       });
 
