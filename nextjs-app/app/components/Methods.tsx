@@ -53,7 +53,8 @@ export default function DynamicMethods({ isDarkMode }: DynamicMethodsProps) {
       setError(null);
       // NOTE: By default, this will call the PHP API.
       // To call the Next.js API, change the path to "/api/token-verify"
-      const res = await fetch("http://localhost:8080/public/verify.php", {
+      // To call the php api locally, change the path to "http://localhost:8080/public/verify.php"
+      const res = await fetch("/api/token-verify", {
         credentials: "include",
       });
 
