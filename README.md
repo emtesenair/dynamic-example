@@ -2,6 +2,10 @@
 
 This project demonstrates how to integrate the Dynamic embedded wallet with a full-stack app using both a modern React (Next.js) frontend and a traditional PHP backend.
 
+## 🚀 Live Demo
+
+Check out the live demo: [https://dynamic-example-1j906rf4h-spark-eng.vercel.app](https://dynamic-example-1j906rf4h-spark-eng.vercel.app)
+
 ---
 
 ## 📦 What's Inside
